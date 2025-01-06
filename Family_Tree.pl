@@ -1,0 +1,37 @@
+parent(robert,john).
+parent(robert,emma).
+parent(maria,john).
+parent(maria,emma).
+male(robert).
+female(maria).
+parent(john,anna).
+male(john).
+female(anna).
+parent(emma,alex).
+female(emma).
+male(alex).
+parent(anna,lily).
+parent(anna,mark).
+parent(alex,lucy).
+parent(alex,max).
+
+father(X,Y):-
+    parent(X,Y),
+    male(X).
+mother(X,Y):-
+    parent(X,Y),
+    female(X).
+sibling(X,Y):-
+    parent(Z,X),
+    parent(Z,Y),
+    X\=Y.
+grandparent(X,Y):-
+    parent(X,Z),
+    parent(Z,Y),
+    male(X).
+grandmother(X,Y):-
+    parent(X,Z),
+    parent(Z,Y),
+    female(X).
+grandchild(X,Y):-
+    grandparent(Y,X).
